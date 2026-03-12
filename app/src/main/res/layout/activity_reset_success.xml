@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
@@ -8,15 +9,15 @@
     android:padding="24dp">
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="32dp"
-        android:src="@android:drawable/checkbox_on_background"
-        android:tint="@color/success_green" />
+        android:id="@+id/imageView"
+        android:layout_width="239dp"
+        android:layout_height="211dp"
+        app:srcCompat="@drawable/pngtree_approval_symbol_check_mark_circle_drawn_hand_green_sign_ok_png_image_6251572" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="50dp"
         android:text="Action Successful"
         android:textColor="@color/text_main"
         android:textSize="28sp"
