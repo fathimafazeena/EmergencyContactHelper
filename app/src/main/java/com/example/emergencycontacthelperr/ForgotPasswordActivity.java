@@ -1,10 +1,10 @@
 package com.example.emergencycontacthelperr;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
@@ -13,6 +13,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     Button sendBtn;
+    ImageButton backBtn;
     EditText emailET;
 
     @Override
@@ -23,7 +24,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         sendBtn = findViewById(R.id.sendBtn);
+        backBtn = findViewById(R.id.backBtn);
         emailET = findViewById(R.id.emailET);
+
+        backBtn.setOnClickListener(v -> finish());
 
         sendBtn.setOnClickListener(v -> {
             String email = emailET.getText().toString().trim();
@@ -32,10 +36,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            Cursor cursor = db.getReadableDatabase().rawQuery(
-                    "SELECT * FROM users WHERE email=?", new String[]{email});
-
-            if (cursor != null && cursor.getCount() > 0) {
+            if (db.checkEmail(email)) {
                 Random random = new Random();
                 int otp = 1000 + random.nextInt(9000); // 4-digit OTP
 
@@ -47,10 +48,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 Toast.makeText(this, "OTP Sent: " + otp, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Email not found", Toast.LENGTH_SHORT).show();
-            }
-
-            if (cursor != null) {
-                cursor.close();
             }
         });
     }

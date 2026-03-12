@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +18,9 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:contentDescription="Emergency Icon"
             android:src="@android:drawable/ic_menu_call"
-            android:tint="@color/white" />
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,9 +53,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:autofillHints="emailAddress"
             android:background="@color/blue_light_bg"
             android:hint="Enter your email"
+            android:inputType="textEmailAddress"
             android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:textSize="14sp" />
 
         <TextView
@@ -65,12 +72,14 @@
         <EditText
             android:id="@+id/passwordE"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:autofillHints="password"
             android:background="@color/blue_light_bg"
             android:hint="Enter your password"
             android:inputType="textPassword"
             android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:textSize="14sp" />
 
         <Button
@@ -114,8 +123,8 @@
                 android:layout_height="wrap_content"
                 android:text="Register Now"
                 android:textColor="@color/primary_blue"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
